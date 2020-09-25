@@ -13,8 +13,7 @@
 #include <vector>
 
 struct FieldLengths {
-    size_t Field_1;
-    size_t Field_2;
+    size_t Field_1,  Field_2;
     size_t Field_3;
     size_t Field_4;
 };
