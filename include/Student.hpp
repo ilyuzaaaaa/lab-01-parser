@@ -1,6 +1,4 @@
-//
-// Created by Илюза Янгирова on 17.09.2020.
-//
+//Copyright [year] <Copyright Owner>
 
 #ifndef INCLUDE_STUDENT_HPP_
 #define INCLUDE_STUDENT_HPP_

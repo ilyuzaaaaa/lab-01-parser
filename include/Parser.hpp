@@ -1,6 +1,5 @@
-//
-// Created by Илюза Янгирова on 17.09.2020.
-//
+//Copyright [year] <Copyright Owner>
+
 
 #ifndef INCLUDE_PARSER_HPP_
 #define INCLUDE_PARSER_HPP_
