@@ -1,0 +1,2 @@
+/Library/Developer/CommandLineTools/usr/bin/ar qc libtemplated.a  CMakeFiles/template.dir/sources/JSONParser.cpp.o CMakeFiles/template.dir/sources/Student.cpp.o
+/Library/Developer/CommandLineTools/usr/bin/ranlib libtemplated.a

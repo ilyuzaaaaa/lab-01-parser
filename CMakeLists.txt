@@ -34,13 +34,14 @@ find_package(GTest CONFIG REQUIRED)
 # TODO: change template word to project name and delete this comment
 add_library(template STATIC
   # enum your files and delete this comment
-        ${CMAKE_CURRENT_SOURCE_DIR}/sources/student.cpp
+
         ${CMAKE_CURRENT_SOURCE_DIR}/sources/JSONParser.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/sources/Student.cpp
 )
 add_executable(tests
   # TODO: enum your files and delete this comment
         ${CMAKE_CURRENT_SOURCE_DIR}/tests/test.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/sources/student.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/sources/Student.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/sources/JSONParser.cpp
 )
 
