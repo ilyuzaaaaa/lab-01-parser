@@ -1,14 +1,14 @@
 //Copyright [year] <Copyright Owner>
 
 
-#include "Parser.hpp"
+#include "JSONParser.hpp"
 
 #include <algorithm>
 
 JSONParser::JSONParser() = default;
 JSONParser::JSONParser(const std::string &path) { parser(path); }
 const std::vector<Student> &JSONParser::getStudents() const { return students; }
-const FieldLengths &JSONParser::getL() const { return l; }
+const FieldLengths &JSONParser::getLengths() const { return l; }
 
 void JSONParser::printRow(std::ostream &out, const Student &student) const {
   out << std::left << "|" << std::setw(l.Field_1) << student.getName()
@@ -84,9 +84,7 @@ void JSONParser::parser(const std::string &path) {
   }
   setLengths();
 }
-void JSONParser::printData() {
-  std::cout << *this;
-}
+
 bool JSONParser::emptyJSONobject() const { return students.empty(); }
 void JSONParser::setJSONString(const std::string &JSON) {
   json data = json::parse(JSON);

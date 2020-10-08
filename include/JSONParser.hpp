@@ -20,15 +20,14 @@ struct FieldLengths {
 class JSONParser {
 public:
  JSONParser();
-    explicit JSONParser(const std::string &path);
+     JSONParser(const std::string &path);
     ~JSONParser();
     const std::vector<Student> &getStudents() const;
-     const FieldLengths &getL() const;
+     const FieldLengths &getLengths() const;
     void printRow(std::ostream& out, const Student &student) const;
      std::string getSeparator() const;
     void parser(const std::string &path);
-    void printData();
-     bool emptyJSONobject() const;
+    bool emptyJSONobject() const;
     void setJSONString(const std::string &JSON);
     friend std::ostream& operator <<(std::ostream& out, JSONParser & p);
 private:
