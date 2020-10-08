@@ -6,7 +6,6 @@
 
 using nlohmann::json;
 
-
 Student::Student(const json &obj) {
   if (obj.empty()) {
     throw std::invalid_argument("Object for Student cannot be empty");
@@ -42,5 +41,3 @@ void Student::from_json(const json &obj) {
   }
   Debt = std::any{obj.at("debt")};
 }
-
-

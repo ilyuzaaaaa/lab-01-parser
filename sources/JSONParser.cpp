@@ -1,6 +1,5 @@
 //Copyright [year] <Copyright Owner>
 
-
 #include "JSONParser.hpp"
 
 #include <algorithm>
@@ -11,8 +10,7 @@ const std::vector<Student> &JSONParser::getStudents() const { return students; }
 const FieldLengths &JSONParser::getLengths() const { return l; }
 
 void JSONParser::printRow(std::ostream &out, const Student &student) const {
-  out << std::left << "|" << std::setw(l.Field_1) << student.getName()
-      << "|";
+  out << std::left << "|" << std::setw(l.Field_1) << student.getName() << "|";
   if (std::any_cast<json>(student.getGroup()).is_number()) {
     out << std::setw(l.Field_2)
         << std::any_cast<json>(student.getGroup()).get<int>();
@@ -23,8 +21,8 @@ void JSONParser::printRow(std::ostream &out, const Student &student) const {
     throw std::invalid_argument(
         "The type of the Group variable is undefined!!!");
   }
-  out << "|" << std::setprecision(3) << std::setw(l.Field_3)
-      << student.getAvg() << "|";
+  out << "|" << std::setprecision(3) << std::setw(l.Field_3) << student.getAvg()
+      << "|";
   if (std::any_cast<json>(student.getDebt()).is_null()) {
     out << std::setw(l.Field_4) << "null";
   } else if (std::any_cast<json>(student.getDebt()).is_array()) {
@@ -122,7 +120,7 @@ void JSONParser::setLengths() {
     }
     if (std::any_cast<json>(student.getDebt()).is_string() &&
         std::any_cast<json>(student.getDebt()).get<std::string>().size() >
-        l.Field_4) {
+            l.Field_4) {
       l.Field_4 =
           std::any_cast<json>(student.getDebt()).get<std::string>().size() + 1;
     }

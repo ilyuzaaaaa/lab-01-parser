@@ -151,12 +151,13 @@ TEST(Parser, PrintRow) {
   ASSERT_EQ(ss.str(), "|Ivanov Petr    |1       |4.25  |null           |");
 }
 TEST(Parser, ConstructorThrow) {
-  ASSERT_THROW(JSONParser(getFullPath("ArraySizeWrong.json")), std::out_of_range);
-  ASSERT_THROW(JSONParser(getFullPath("NoBracesForArray.json")), std::invalid_argument);
+  ASSERT_THROW(JSONParser(getFullPath("ArraySizeWrong.json")),
+               std::out_of_range);
+  ASSERT_THROW(JSONParser(getFullPath("NoBracesForArray.json")),
+               std::invalid_argument);
 }
 
-
-//Tests for Student
+// Tests for Student
 TEST(Student, CorrectTypesOfFieldsNull) {
   Student s{json::parse(R"({
       "name": "Ivanov Petr",
@@ -223,7 +224,6 @@ TEST(Student, From_json_methods) {
   ASSERT_DOUBLE_EQ(m.getAvg(), 4.25);
   ASSERT_TRUE(std::any_cast<json>(m.getDebt()).is_null());
 }
-
 
 TEST(Student, ThrowFromJsonMethod) {
   Student s;
