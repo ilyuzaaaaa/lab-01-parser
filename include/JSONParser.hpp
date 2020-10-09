@@ -28,7 +28,7 @@ class JSONParser {
   std::string getSeparator() const;
   void parser(const std::string &path);
   bool emptyJSONobject() const;
-  void setJSONString(const std::string &JSON);
+
   friend std::ostream &operator<<(std::ostream &out, JSONParser &p);
 
  private:

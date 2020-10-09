@@ -16,122 +16,16 @@ std::string getFullPath(const std::string& name) {
 TEST(Parser, EmptyParser) {
   JSONParser a;
   ASSERT_TRUE(a.emptyJSONobject());
-  JSONParser b;
-  b.setJSONString(R"({
-  "items": [
-    {
-      "name": "Ivanov Petr",
-      "group": "1",
-      "avg": "4.25",
-      "debt": null
-    },
-    {
-      "name": "Sidorov Ivan",
-      "group": 31,
-      "avg": 4,
-      "debt": "C++"
-    },
-    {
-      "name": "Pertov Nikita",
-      "group": "IU8-31",
-      "avg": 3.33,
-      "debt": [
-        "C++",
-        "Linux",
-        "Network"
-      ]
-    }
-  ],
-  "_meta": {
-    "count": 3
-  }
-})");
-  ASSERT_FALSE(b.emptyJSONobject());
 }
 TEST(Parser, Throw) {
   EXPECT_THROW(JSONParser(""), std::invalid_argument);
   EXPECT_THROW(JSONParser("Wrong.json"), std::out_of_range);
-  EXPECT_THROW(JSONParser().setJSONString(R"({
-  "items":
-    {
-      "name": "Ivanov Petr",
-      "group": "1",
-      "avg": "4.25",
-      "debt": null
-    }
-}
-)"),
-               std::invalid_argument);
-  EXPECT_THROW(JSONParser().setJSONString(R"({
-  "items": [
-    {
-      "name": "Ivanov Petr",
-      "group": "1",
-      "avg": "4.25",
-      "debt": null
-    },
-    {
-      "name": "Sidorov Ivan",
-      "group": 31,
-      "avg": 4,
-      "debt": "C++"
-    },
-    {
-      "name": "Pertov Nikita",
-      "group": "IU8-31",
-      "avg": 3.33,
-      "debt": [
-        "C++",
-        "Linux",
-        "Network"
-      ]
-    }
-  ],
-  "_meta": {
-    "count": 4
-  }
-})"),
-               std::invalid_argument);
 }
 TEST(Parser, LengthOfFields) {
   ASSERT_EQ(JSONParser().getLengths().Field_1, 15);
   ASSERT_EQ(JSONParser().getLengths().Field_2, 8);
   ASSERT_EQ(JSONParser().getLengths().Field_3, 6);
   ASSERT_EQ(JSONParser().getLengths().Field_4, 15);
-  JSONParser b;
-  b.setJSONString(R"({
-  "items": [
-    {
-      "name": "Ivanov Petr Petrovich",
-      "group": "1",
-      "avg": "4.25",
-      "debt": null
-    },
-    {
-      "name": "Sidorov Ivan",
-      "group": 31,
-      "avg": 4,
-      "debt": "C++ Java Python C#"
-    },
-    {
-      "name": "Pertov Nikita",
-      "group": "IU8-31-2019-2025",
-      "avg": 3.33,
-      "debt": [
-        "C++",
-        "Linux",
-        "Network"
-      ]
-    }
-  ],
-  "_meta": {
-    "count": 3
-  }
-})");
-  ASSERT_EQ(b.getLengths().Field_1, 22);  // 21+1
-  ASSERT_EQ(b.getLengths().Field_2, 17);  // 16+1
-  ASSERT_EQ(b.getLengths().Field_3, 6);
-  ASSERT_EQ(b.getLengths().Field_4, 19);  // 18+1
 }
 
 TEST(Parser, Separator) {

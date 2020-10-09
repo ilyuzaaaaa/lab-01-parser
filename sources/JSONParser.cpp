@@ -84,19 +84,6 @@ void JSONParser::parser(const std::string &path) {
 }
 
 bool JSONParser::emptyJSONobject() const { return students.empty(); }
-void JSONParser::setJSONString(const std::string &JSON) {
-  json data = json::parse(JSON);
-  if (!data.at("items").is_array()) {
-    throw std::invalid_argument("Items is not array!!!");
-  }
-  if (data.at("items").size() != data.at("_meta").at("count").get<size_t>()) {
-    throw std::invalid_argument("Items length don't equal _meta.count!!!");
-  }
-  for (auto const &student : data.at("items")) {
-    students.emplace_back(student);
-  }
-  setLengths();
-}
 void JSONParser::setLengths() {
   for (const auto &student : students) {
     if (student.getName().size() > l.Field_1) {
