@@ -5,7 +5,7 @@
 #include "Parser.hpp"
 
 #include <algorithm>
-
+const size_t addProbel = 1;
 JSONParser::JSONParser() = default;
 JSONParser::JSONParser(const std::string &path) { parser(path); }
 const std::vector<Student> &JSONParser::getStudents() const { return students; }
@@ -105,7 +105,7 @@ void JSONParser::setJSONString(const std::string &JSON) {
 void JSONParser::setLengths() {
   for (const auto &student : students) {
     if (student.getName().size() > l.Field_1) {
-      l.Field_1 = student.getName().size() + 1;
+      l.Field_1 = student.getName().size() + addProbel;
     }
     if (std::any_cast<json>(student.getGroup()).is_number()) {
       if (std::to_string(std::any_cast<json>(student.getGroup()).get<int>())
@@ -113,21 +113,21 @@ void JSONParser::setLengths() {
         l.Field_2 =
             std::to_string(std::any_cast<json>(student.getGroup()).get<int>())
                 .size() +
-            1;
+            addProbel;
       }
     } else {
       if (std::any_cast<json>(student.getGroup()).get<std::string>().size() >
           l.Field_2) {
         l.Field_2 =
             std::any_cast<json>(student.getGroup()).get<std::string>().size() +
-            1;
+            addProbel;
       }
     }
     if (std::any_cast<json>(student.getDebt()).is_string() &&
         std::any_cast<json>(student.getDebt()).get<std::string>().size() >
         l.Field_4) {
       l.Field_4 =
-          std::any_cast<json>(student.getDebt()).get<std::string>().size() + 1;
+          std::any_cast<json>(student.getDebt()).get<std::string>().size() + addProbel;
     }
   }
 }
